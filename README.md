@@ -1,397 +1,305 @@
-<div align="center">
+Website Traffic Generator
 
-# 🚀 Website Traffic Generator & Human Session Simulator
+Automated Website Traffic Processing and Browser Automation Engine
 
-**Advanced Open-Source Traffic Simulation, Human Behavior Emulation, and Headless Browser Automation Engine**
+Developed and maintained by "Wahyu Andika Putra" (https://andikadev.com)
+Founder and Full-Stack Software Engineer at "AndikaDev" (https://andikadev.com)
 
-Developed & Maintained with ❤️ by **[Wahyu Andika Putra](https://andikadev.com)**  
-*(Founder & Fullstack / Security Engineer at **[AndikaDev](https://andikadev.com)**)*
-
-[![Python Version](https://img.shields.io/badge/Python-3.8%2B-blue.svg?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
-[![Playwright](https://img.shields.io/badge/Playwright-Chromium%20%7C%20Firefox-2EAD33.svg?style=for-the-badge&logo=playwright&logoColor=white)](https://playwright.dev/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![Author: Wahyu Andika Putra](https://img.shields.io/badge/Author-Wahyu%20Andika%20Putra-blueviolet.svg?style=for-the-badge&logo=github)](https://github.com/andikaputradev)
-[![Official Website](https://img.shields.io/badge/Website-andikadev.com-00C7B7.svg?style=for-the-badge&logo=googlechrome&logoColor=white)](https://andikadev.com)
-
-<br/>
-
-[🌟 Overview](#-overview) • [✨ Key Features](#-key-features) • [🏗️ Architecture](#️-architecture) • [🚀 Quick Start](#-quick-start) • [⚙️ Configuration](#️-configuration-guide) • [🔄 Proxy Generation](#-proxy-generation--validation) • [⏱️ Scheduler & Automation](#️-scheduler--automation) • [🌐 VPS Deployment](#-vps-deployment) • [👨‍💻 Author & Contact](#-author--contact)
+""Python" (https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square&logo=python)" (https://python.org)
+""Playwright" (https://img.shields.io/badge/Playwright-Chromium%20%7C%20Firefox-2EAD33?style=flat-square&logo=playwright)" (https://playwright.dev/)
+""License: MIT" (https://img.shields.io/badge/License-MIT-yellow?style=flat-square)" (https://opensource.org/licenses/MIT)
+""Website" (https://img.shields.io/badge/Website-andikadev.com-0F766E?style=flat-square)" (https://andikadev.com)
 
 ---
 
-</div>
+Overview
 
-## 🌟 Overview
+Website Traffic Generator is a Python-based browser automation engine built with Playwright. It automates website navigation, page rendering, interaction workflows, and session management through real browser engines.
 
-**Website Traffic Generator** is a production-grade, asynchronous website traffic generator and user-behavior simulator built in Python using **Playwright**. Unlike elementary curl/ping tools or simple HTTP request spammers that are immediately dropped by modern Web Application Firewalls (WAF) and ignored by analytics platforms, this engine drives **real, headless Chromium/Firefox browsers** to render complete DOM trees, load CSS/web fonts, execute JavaScript bundles, and trigger analytics SDKs such as **Google Analytics 4 (GA4)**, Meta Pixel, Adobe Analytics, and Plausible.
+The project is designed for developers, QA engineers, and system administrators who need to evaluate website behavior, validate analytics implementations, and test browser-based workflows in controlled environments.
 
-The project is designed, engineered, and maintained by **[Wahyu Andika Putra](https://andikadev.com)** from **[AndikaDev](https://andikadev.com)** to serve developers, SEO specialists, QA engineers, and system administrators for:
-- Testing and verifying analytics events, UTM tracking, and conversion funnels.
-- Realistic web application load and infrastructure stress testing under real browser conditions.
-- Simulating organic search, social media, and multi-channel referral traffic flows.
-- Validating CDN caching, edge routing, and Web Application Firewall responsiveness.
+Key Use Cases
 
-> 💡 **Looking for custom software development, mobile apps, or security audits?**  
-> Explore official services by Wahyu Andika Putra at **[AndikaDev.com](https://andikadev.com)**:  
-> • [Jasa Pembuatan Website Profesional](https://andikadev.com/layanan/pembuatan-website)  
-> • [Jasa Pembuatan Aplikasi Mobile (Android & iOS)](https://andikadev.com/layanan/pembuatan-aplikasi)  
-> • [Jasa Upload Aplikasi ke Google Play Store](https://andikadev.com/layanan/upload-play-store)  
-> • [Audit Keamanan Siber & Defensive Security](https://andikadev.com/layanan/keamanan-siber)  
-> • [Web3 & Blockchain Development](https://andikadev.com/layanan/web3-blockchain)
+- Website functionality and browser compatibility testing.
+- Analytics event and UTM parameter validation.
+- Multi-page navigation and interaction testing.
+- Responsive layout and viewport verification.
+- CDN, caching, and infrastructure performance testing.
+- Automated browser workflows for authorized environments.
 
----
+Key Features
 
-## ✨ Key Features
+Browser Automation
 
-### 1. 🧠 Realistic Human Behavior Emulation
-- **Bézier Curve Mouse Movements:** Generates mathematical cubic Bézier curve cursor paths with acceleration and deceleration curves that evade bot detection heuristics.
-- **Natural Dynamic Scrolling:** Smooth, non-linear scrolling with randomized dwell depths, pauses, reading intervals, and occasional upward scrolls.
-- **Interactive Element Clicking:** Identifies and interacts with internal page links, tabs, categories, accordion filters, and preview cards to simulate authentic user exploration.
-- **GA4 Engaged Sessions:** Guarantees sessions satisfy Google Analytics 4 thresholds for *Engaged Sessions* (customizable dwell time $\ge 10$ seconds, multi-page paths, and active DOM engagement).
+- Chromium and Firefox browser support through Playwright.
+- Automated page navigation and internal link traversal.
+- Configurable page interaction and scrolling.
+- Adjustable session duration and navigation depth.
+- Headless and headed execution modes.
 
-### 2. 🔀 Multi-Source Traffic Spoofing & Referrer Injection
-- **Organic Search Engines:** Emulates organic visitors arriving from Google, Bing, Yahoo, DuckDuckGo, and Yandex, complete with customized search keywords and search engine query params.
-- **Social Media Networks:** Spoofs referrers from Twitter/X, LinkedIn, Reddit, Facebook, Instagram, and Pinterest.
-- **Direct & Referral Influx:** Configurable ratios for direct URL entries, web publications, Medium, Dev.to, and industry partner backlinks.
+Traffic Source Configuration
 
-### 3. 🛡️ Rotating Proxy Pool & Geo-Targeting
-- Full support for **HTTP**, **HTTPS**, and **SOCKS5** rotating proxies.
-- Flexible rotation strategies: `random`, `round-robin`, and `per-session`.
-- Built-in multi-threaded proxy generator & real-time validator (`generate_proxies.py`) that harvests and verifies live proxies against your target domain.
+- Configurable referrer information.
+- Support for direct, search, social, and referral source classifications.
+- Customizable URL parameters and search-related test scenarios.
+- Configurable traffic distribution for controlled testing.
 
-### 4. 📱 Dynamic Device Fingerprinting & Viewports
-- Balanced device split: **Desktop** (55%), **Mobile** (40%), and **Tablet** (5%).
-- Curated, up-to-date User-Agent database encompassing Chrome, Safari, Edge, Firefox, iOS Mobile Safari, and Android Chrome.
-- Responsive viewports, screen pixel ratios, touch event support, and automated header locale / timezone synchronization.
+Referrer information does not independently establish genuine organic or social traffic.
 
-### 5. ⚡ Asynchronous Concurrency & Resource Efficiency
-- Powered by `asyncio` and Playwright browser contexts for ultra-low memory overhead.
-- Supports concurrent browser contexts running in parallel without launching multiple heavy browser instances.
+Proxy Management
 
----
+- HTTP, HTTPS, and SOCKS5 proxy configuration.
+- Random and round-robin proxy selection.
+- Proxy connectivity validation.
+- Configurable proxy lists for authorized testing environments.
 
-## 🏗️ Architecture
+Device and Viewport Configuration
 
-```
-                                  ┌────────────────────────────────┐
-                                  │   Target Website (e.g. GA4)    │
-                                  └────────────────────────────────┘
-                                                  ▲
-                                                  │ (Realistic Sessions)
-┌──────────────────────┐         ┌────────────────┴────────────────┐
-│  config.yaml / CLI   │ ──────► │       run_traffic.py            │
-└──────────────────────┘         │   Async Session Coordinator     │
-                                 └────────────────┬────────────────┘
-                                                  │
-                 ┌────────────────────────────────┼────────────────────────────────┐
-                 ▼                                ▼                                ▼
-  ┌─────────────────────────────┐  ┌─────────────────────────────┐  ┌─────────────────────────────┐
-  │   Human Behavior Engine     │  │     Proxy Pool Manager      │  │   User-Agent & Referrers    │
-  │ • Cubic Bézier Mouse Moves  │  │ • HTTP / HTTPS / SOCKS5     │  │ • Organic Search Keywords   │
-  │ • Dynamic Dwell & Scroll    │  │ • Health checks & rotation  │  │ • Social / Referral / Direct│
-  │ • Internal Link Traversal   │  │ • proxies.txt validator     │  │ • Device & Viewport Emulation│
-  └─────────────────────────────┘  └─────────────────────────────┘  └─────────────────────────────┘
-```
+- Desktop, mobile, and tablet viewport profiles.
+- Configurable browser user-agent strings.
+- Responsive layout verification.
+- Browser locale and timezone configuration.
 
----
+Asynchronous Execution
 
-## 🚀 Quick Start
+- Python "asyncio" integration.
+- Concurrent browser context management.
+- Configurable concurrency and execution intervals.
+- Logging and JSON report generation.
 
-### Prerequisites
-- **Python 3.8 or newer** installed.
-- **Git** installed on your system.
-- Recommended: Operating on Linux VPS (Ubuntu/Debian) or Windows 10/11.
+Architecture
 
-### Step 1: Clone the Repository
+Configuration
+     |
+     v
+Traffic Execution Engine
+     |
+     +-- Browser Automation
+     |      +-- Page Navigation
+     |      +-- Element Interaction
+     |      +-- Scroll and Viewport Testing
+     |
+     +-- Session Management
+     |      +-- Duration and Page Limits
+     |      +-- Concurrency Control
+     |
+     +-- Proxy Management
+     |      +-- Proxy Configuration
+     |      +-- Connectivity Validation
+     |
+     +-- Logging and Reporting
+            +-- Execution Logs
+            +-- JSON Reports
 
-```bash
+Requirements
+
+- Python 3.8 or newer.
+- Git.
+- Playwright and its supported browser dependencies.
+- Linux, macOS, or Windows.
+
+For production environments, use a supported Python version and keep project dependencies updated.
+
+Installation
+
+1. Clone the Repository
+
 git clone https://github.com/andikaputradev/website-traffic-generator.git
 cd website-traffic-generator
-```
 
-### Step 2: Create and Activate Virtual Environment
+2. Create a Virtual Environment
 
-**On Windows (PowerShell):**
-```powershell
+Windows PowerShell
+
 python -m venv venv
 .\venv\Scripts\Activate.ps1
-```
 
-**On Linux / macOS:**
-```bash
+Linux and macOS
+
 python3 -m venv venv
 source venv/bin/activate
-```
 
-### Step 3: Install Dependencies & Playwright Browsers
+3. Install Dependencies
 
-```bash
 pip install -r requirements.txt
 python -m playwright install chromium
-```
 
-> *Tip: If installing on a headless Ubuntu/Debian VPS, also install the necessary system libraries:*  
-> `python -m playwright install-deps chromium`
+On supported Linux systems, install additional browser dependencies if required:
 
----
+python -m playwright install-deps chromium
 
-## 💻 Usage Guide
+Usage
 
-### 1. Simple Single Command
+Run a Browser Automation Session
 
-Launch 30 simulated visitor sessions to your website with 5 concurrent workers:
+python run_traffic.py --url "https://example.com" --sessions 30 --concurrent 5
 
-```bash
-python run_traffic.py --url "https://andikadev.com" --sessions 30 --concurrent 5
-```
+Configure a Proxy List
 
-### 2. Using Custom Proxy File
+python run_traffic.py --url "https://example.com" --sessions 30 --concurrent 4 --proxy-file proxies.txt
 
-Run traffic routed through your verified proxy list:
+Run with a Configuration File
 
-```bash
-python run_traffic.py --url "https://andikadev.com" --sessions 50 --concurrent 4 --proxy-file proxies.txt
-```
-
-### 3. Production Mode (YAML Configuration)
-
-For fine-grained control over dwell time, internal link exploration, device distribution, and keyword spoofing, use `config.yaml`:
-
-```bash
 python run_traffic.py --config config.yaml
-```
 
----
+Replace "example.com" with a website you own or are authorized to test.
 
-## ⚙️ Configuration Guide
+Configuration
 
-The `config.yaml` file gives you full mastery over your traffic campaigns:
+The "config.yaml" file provides centralized configuration for target URLs, session limits, browser settings, and execution behavior.
 
-```yaml
-# ============================================================
-# Website Traffic Generator - Configuration
-# ============================================================
-# Target: https://andikadev.com
-# Author: Wahyu Andika Putra (https://andikadev.com)
-# ============================================================
-
-# --- Target Website ---
 target:
-  url: "https://andikadev.com"          # Primary domain / URL
-  pages:                                # Specific pages to visit
+  url: "https://example.com"
+  pages:
     - "/"
-    - "/tentang"
-    - "/layanan"
-    - "/layanan/pembuatan-website"
-    - "/layanan/pembuatan-aplikasi"
-    - "/layanan/upload-play-store"
-    - "/layanan/keamanan-siber"
-    - "/layanan/web3-blockchain"
-    - "/blog"
-    - "/blog/core-web-vitals-inp-nextjs-optimasi-performa-seo"
-    - "/blog/cara-membuat-website-pendaftaran-online"
-    - "/blog/kepatuhan-uu-pdp-bagi-pengembang-kontrol-teknis"
-    - "/kontak"
+    - "/about"
+    - "/contact"
 
-# --- Session & Duration Settings ---
 sessions:
-  total: 50                           # Total visitors to generate
-  concurrent: 4                       # Simultaneous browser contexts
-  delay_min: 10                       # Minimum dwell time per page in seconds (ensures GA4 engagement)
-  delay_max: 22                       # Maximum dwell time per page in seconds
-  pages_per_session_min: 2            # Minimum pageviews per visitor
-  pages_per_session_max: 4            # Maximum pageviews per visitor
+  total: 30
+  concurrent: 5
+  delay_min: 5
+  delay_max: 15
+  pages_per_session_min: 1
+  pages_per_session_max: 3
 
-# --- Browser Engine ---
 browser:
-  headless: true                      # Run invisibly (true) or open window (false)
-  engine: "chromium"                  # Options: chromium, firefox, webkit
-  timeout: 30000                      # 30-second timeout per page load
+  headless: true
+  engine: "chromium"
+  timeout: 30000
 
-# --- Realistic Human Behavior Simulation ---
 behavior:
-  scroll: true                        # Natural human scrolling
-  scroll_speed: "random"              # Options: slow, medium, fast, random
-  click_links: true                   # Autonomously click internal links
-  click_content: true                 # Click interactive content (tabs, categories, buttons)
-  mouse_movement: true                # Mathematical Bezier curve mouse movements
-  random_pauses: true                 # Natural reading pauses
+  scroll: true
+  scroll_speed: "random"
+  click_links: true
+  click_content: true
+  mouse_movement: true
+  random_pauses: true
 
-# --- Traffic Referrer Distribution ---
 referrers:
-  organic_search_percent: 50          # 50% from Search Engines
-  social_percent: 25                  # 25% from Social Media
-  referral_percent: 15                # 15% from External Websites
-  direct_percent: 10                  # 10% Direct Navigation
-  keywords:                           # Realistic SEO search queries
-    - "wahyu andika putra"
-    - "andikadev"
-    - "jasa pembuatan website"
-    - "jasa pembuatan website profesional"
-    - "jasa bikin web semarang wonosobo"
-    - "jasa pembuatan aplikasi mobile"
-    - "jasa upload aplikasi ke play store"
-    - "jasa audit keamanan siber"
-    - "penetration testing indonesia"
-    - "web3 blockchain developer indonesia"
+  organic_search_percent: 50
+  social_percent: 25
+  referral_percent: 15
+  direct_percent: 10
 
-# --- Device Distribution ---
 devices:
-  desktop_percent: 55                 # 55% Desktop (Chrome, Firefox, Safari)
-  mobile_percent: 40                  # 40% Mobile (Android Chrome, iOS Safari)
-  tablet_percent: 5                   # 5% Tablet (iPad, Galaxy Tab)
+  desktop_percent: 55
+  mobile_percent: 40
+  tablet_percent: 5
 
-# --- Proxy Rotation ---
 proxy:
-  enabled: true                       # Set to true to route via proxies
-  file: "proxies.txt"                 # File containing proxy list (protocol://ip:port)
-  rotation: "random"                  # Strategy: random, round-robin
+  enabled: false
+  file: "proxies.txt"
+  rotation: "random"
 
-# --- Output & Logging ---
 output:
-  logging: true                       # Write detailed logs
-  log_file: "traffic_generator.log"   # Log filepath
-  log_level: "INFO"                   # Log level (DEBUG, INFO, WARNING, ERROR)
-  report_file: "report.json"          # JSON summary report
-```
+  logging: true
+  log_file: "traffic_generator.log"
+  log_level: "INFO"
+  report_file: "report.json"
 
----
+Note: Configuration options must match the parameters implemented in the current source code. The values above are an example configuration, not a guarantee that every option is supported by every version.
 
-## 🔄 Proxy Generation & Validation
+Proxy Generation and Validation
 
-Need fresh proxies? The included `generate_proxies.py` script automatically scrapes public repositories, tests connectivity against the target website via asynchronous HTTPS requests, and writes working proxies directly to `proxies.txt`:
+The project may include a "generate_proxies.py" utility for collecting and checking proxy endpoints.
 
-```bash
 python generate_proxies.py
-```
 
-Features:
-- Scrapes across verified HTTP, HTTPS, and SOCKS5 proxy pools.
-- Concurrent validation with semaphore throttling (tests hundreds of proxies per minute).
-- Only saves proxies that return an authentic `HTTP 200 OK` status from the target domain.
+Use trusted proxy providers or endpoints you are authorized to access. Public proxies can be unreliable and may expose traffic or credentials to third parties.
 
----
+Scheduling and Automation
 
-## ⏱️ Scheduler & Automation
+If the repository includes "run_scheduler.py", scheduled execution can be started with:
 
-To simulate natural human traffic distribution throughout the day rather than sending spikes that trigger anomaly detectors, use `run_scheduler.py`:
-
-```bash
 python run_scheduler.py
-```
 
-- **Peak Hour Detection:** Schedules batches during high-traffic hours (08:00 - 23:00 local time).
-- **Batch Processing:** Runs controlled batches (e.g., 20 sessions per run) to maintain steady, natural traffic pacing.
-- **Crash Recovery:** Safely recovers and logs errors without interrupting the scheduling cycle.
+Scheduling behavior, execution intervals, recovery mechanisms, and supported options depend on the implementation in the repository.
 
----
+Deployment
 
-## 🌐 VPS Deployment
+The application can run on a Linux VPS or another compatible environment.
 
-Deploying the generator to run 24/7 on a Linux VPS (Ubuntu/Debian):
+For long-running workloads, configure a dedicated, unprivileged service account, an isolated Python environment, appropriate resource limits, and persistent application logs.
 
-### Method 1: Using `nohup` (Simplest)
-```bash
-nohup python3 run_scheduler.py > scheduler.log 2>&1 &
-echo "Scheduler running in background with PID $!"
-```
+Example systemd service:
 
-To stop:
-```bash
-pkill -f run_scheduler.py
-```
-
-### Method 2: Systemd Service (Recommended for Production)
-
-Create a systemd service file `/etc/systemd/system/traffic-generator.service`:
-
-```ini
 [Unit]
-Description=Website Traffic Generator Service
+Description=Website Traffic Generator
 After=network.target
 
 [Service]
 Type=simple
-User=root
-WorkingDirectory=/var/www/website-traffic-generator
-ExecStart=/var/www/website-traffic-generator/venv/bin/python run_scheduler.py
-Restart=always
+User=trafficbot
+WorkingDirectory=/opt/website-traffic-generator
+ExecStart=/opt/website-traffic-generator/venv/bin/python run_scheduler.py
+Restart=on-failure
 RestartSec=15
 
 [Install]
 WantedBy=multi-user.target
-```
 
-Enable and start the service:
-```bash
+Save the configuration as "/etc/systemd/system/traffic-generator.service", then run:
+
 sudo systemctl daemon-reload
-sudo systemctl enable traffic-generator
-sudo systemctl start traffic-generator
+sudo systemctl enable --now traffic-generator
 sudo systemctl status traffic-generator
-```
 
----
+Adjust the service account, working directory, and entry point to match your deployment.
 
-## ⚖️ Website Traffic Generator vs. Traditional Bot Scripts
+Testing and Analytics Validation
 
-| Capability | This Project (Playwright Browser) | Traditional cURL / Python `requests` |
-| :--- | :--- | :--- |
-| **Full DOM & JS Execution** | ✅ Complete (Renders React, Next.js, Vue, etc.) | ❌ No (Raw HTML only) |
-| **GA4 & Analytics Tracking** | ✅ Triggers real events & engaged sessions | ❌ Ignored or blocked by analytics |
-| **Mouse Movements & Scroll** | ✅ Mathematical Bézier curves & dynamic scroll | ❌ None |
-| **Internal Link Traversal** | ✅ Clicks real DOM elements naturally | ❌ Only follows HTTP redirects |
-| **Fingerprint Integrity** | ✅ Real Chromium viewports, WebGL, canvas | ❌ Easily fingerprinted as synthetic bot |
-| **WAF Evasion** | ✅ High (simulates real browser environment) | ❌ Readily blocked by Cloudflare/AWS WAF |
+The browser automation engine can be used to verify website functionality and inspect analytics implementations in controlled test environments.
 
----
+Recommended validation scenarios include:
 
-## 🛡️ Fair Use & Ethical Disclaimer
+- Confirming that analytics tags load correctly.
+- Verifying event names and parameters.
+- Testing navigation and conversion workflows.
+- Checking responsive layouts across viewport profiles.
+- Reviewing execution logs and generated reports.
 
-This software is developed strictly for **educational, testing, QA benchmarking, and authorized infrastructure evaluation purposes**:
-- **Authorization Required:** Only test websites, servers, and applications that you own or have explicit written authorization to test.
-- **No Ad Fraud:** Never use this software to generate fraudulent clicks or impressions on Google AdSense, display ads, or affiliate networks.
-- **Server Courtesy:** Calibrate your concurrency and session intervals to prevent unintended load spikes or Denial of Service (DoS) conditions on web servers.
+Automated browser sessions should not be treated as evidence of genuine human visitors, genuine search rankings, or authentic advertising engagement. Analytics platforms may classify or filter automated activity.
 
----
+Responsible Use
 
-## 👨‍💻 Author & Contact
+Use this software only on websites and infrastructure you own or have explicit authorization to test.
 
-This project is created and maintained by **Wahyu Andika Putra**.
+- Do not generate fraudulent advertising impressions or clicks.
+- Do not manipulate analytics or business metrics deceptively.
+- Do not overload websites or third-party infrastructure.
+- Respect applicable terms of service, access controls, and rate limits.
+- Protect credentials, proxy information, and sensitive execution logs.
 
-<div align="center">
+Author
 
-### **Wahyu Andika Putra**
-*Fullstack Software Engineer • Cybersecurity Researcher • Web3 Specialist*  
-Founder of **[AndikaDev](https://andikadev.com)**
+Wahyu Andika Putra
+Full-Stack Software Engineer and Cybersecurity Researcher
+Founder of "AndikaDev" (https://andikadev.com)
 
-</div>
+Channel| Contact
+Website| "andikadev.com" (https://andikadev.com)
+LinkedIn| "Wahyu Andika Putra" (https://linkedin.com/in/wahyu-andika-putra)
+GitHub| "@andikaputradev" (https://github.com/andikaputradev)
+Email| "wahyuandikaputra.co.id@gmail.com" (mailto:wahyuandikaputra.co.id@gmail.com)
+WhatsApp| "+62 877-3013-9582" (https://wa.me/6287730139582)
+Telegram| "@andikaputradev" (https://t.me/andikaputradev)
+Instagram| "@andikaputradev" (https://instagram.com/andikaputradev)
+TikTok| "@andikaputradev" (https://tiktok.com/@andikaputradev)
 
-| Channel | Link / Information |
-| :--- | :--- |
-| 🌐 **Official Website** | [https://andikadev.com](https://andikadev.com) |
-| 💼 **LinkedIn** | [Wahyu Andika Putra](https://linkedin.com/in/wahyu-andika-putra) |
-| 🐙 **GitHub** | [@andikaputradev](https://github.com/andikaputradev) |
-| 📧 **Email** | [wahyuandikaputra.co.id@gmail.com](mailto:wahyuandikaputra.co.id@gmail.com) |
-| 💬 **WhatsApp / Call** | [+62 877-3013-9582](https://wa.me/6287730139582) |
-| ✈️ **Telegram** | [@andikaputradev](https://t.me/andikaputradev) |
-| 📸 **Instagram** | [@andikaputradev](https://instagram.com/andikaputradev) & [@w.andikaputraa](https://instagram.com/w.andikaputraa) |
-| 🎵 **TikTok** | [@andikaputradev](https://tiktok.com/@andikaputradev) |
-| 📘 **Facebook** | [andikaputradev](https://facebook.com/andikaputradev) |
+Professional Services
 
----
+Explore software development and engineering services at "AndikaDev.com" (https://andikadev.com).
 
-### 💼 Professional Services by AndikaDev
-Need end-to-end digital engineering or custom software solutions? Visit **[andikadev.com](https://andikadev.com)** to consult directly with Wahyu Andika Putra:
-- 💻 **[Jasa Pembuatan Website](https://andikadev.com/layanan/pembuatan-website)** – Modern, blazing-fast Next.js, React, and WordPress sites with high SEO performance.
-- 📱 **[Jasa Pembuatan Aplikasi Mobile](https://andikadev.com/layanan/pembuatan-aplikasi)** – Cross-platform mobile applications for iOS & Android built with React Native / Flutter.
-- 🚀 **[Jasa Upload Google Play Store](https://andikadev.com/layanan/upload-play-store)** – End-to-end publishing, target API compliance, privacy policy, and Google Play Console approval.
-- 🛡️ **[Keamanan Siber & Defensive Security](https://andikadev.com/layanan/keamanan-siber)** – Web penetration testing, vulnerability assessment, and hardening.
-- ⛓️ **[Web3 & Blockchain Development](https://andikadev.com/layanan/web3-blockchain)** – Smart contract development, security audits, and decentralized applications (dApps).
+- "Website Development" (https://andikadev.com/layanan/pembuatan-website)
+- "Mobile Application Development" (https://andikadev.com/layanan/pembuatan-aplikasi)
+- "Google Play Store Publishing" (https://andikadev.com/layanan/upload-play-store)
+- "Cybersecurity and Defensive Security" (https://andikadev.com/layanan/keamanan-siber)
+- "Web3 and Blockchain Development" (https://andikadev.com/layanan/web3-blockchain)
 
----
+License
 
-## 📝 License
+This project is distributed under the MIT License. See ""LICENSE"" (LICENSE) for the complete license terms.
 
-Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for complete details.
-
-Copyright (c) 2026 **Wahyu Andika Putra** ([https://andikadev.com](https://andikadev.com)). All rights reserved.
+Copyright (c) 2026 Wahyu Andika Putra
+"https://andikadev.com" (https://andikadev.com)
