@@ -1,0 +1,68 @@
+# ============================================================
+# Website Traffic Generator - Test Configuration
+# ============================================================
+# Target: https://andikadev.com
+# Author: Wahyu Andika Putra (https://andikadev.com)
+# ============================================================
+
+# --- Target Website ---
+target:
+  url: "https://andikadev.com"        # Primary URL to generate traffic for
+  pages:                              # Sub-pages to visit during sessions
+    - "/tentang"
+    - "/layanan"
+    - "/blog"
+    - "/kontak"
+
+# --- Session Settings ---
+sessions:
+  total: 2                            # 2 visitor sessions for quick verification
+  concurrent: 2                       # 2 simultaneous browser instances
+  delay_min: 5                        # Min dwell time per page (5 seconds)
+  delay_max: 10                       # Max dwell time per page (10 seconds)
+  pages_per_session_min: 1            # Min pages per visitor session
+  pages_per_session_max: 2            # Max pages per visitor session
+
+# --- Browser Engine ---
+browser:
+  headless: true                      # true = invisible
+  engine: "chromium"                  # Options: chromium, firefox, webkit
+  timeout: 30000                      # Page load timeout (milliseconds)
+
+# --- Human Behavior Simulation ---
+behavior:
+  scroll: true                        # Simulate page scrolling
+  scroll_speed: "random"              # Options: slow, medium, fast, random
+  click_links: true                   # Click internal links for multi-page sessions
+  mouse_movement: true                # Simulate cursor movements
+  random_pauses: true                 # Natural reading pauses
+
+# --- Traffic Source Distribution ---
+referrers:
+  organic_search_percent: 50          # % from search engines
+  social_percent: 20                  # % from social media
+  referral_percent: 20                # % from other websites
+  direct_percent: 10                  # % direct visits (no referrer)
+  keywords:                           # Keywords used in search referrers
+    - "andikadev"
+    - "wahyu andika putra"
+    - "jasa pembuatan website"
+
+# --- Device Distribution ---
+devices:
+  desktop_percent: 55                 # % desktop browsers
+  mobile_percent: 40                  # % mobile browsers
+  tablet_percent: 5                   # % tablet browsers
+
+# --- Proxy Configuration ---
+proxy:
+  enabled: false                      # Disabled for quick local tests
+  file: "proxies.txt"
+  rotation: "random"
+
+# --- Output Settings ---
+output:
+  logging: true
+  log_file: "traffic_generator.log"
+  log_level: "INFO"
+  report_file: "report_test.json"

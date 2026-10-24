@@ -1,0 +1,44 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy using SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: ${{ secrets.VPS_PORT || 22 }}
+          script: |
+            # Go to project directory (change this to your actual VPS path)
+            cd ~/website-traffic-generator || cd /var/www/website-traffic-generator || exit 1
+            
+            # Pull latest code
+            git pull origin master || git pull origin main
+            
+            # Activate virtual environment if exists, and install requirements
+            if [ -d "venv" ]; then
+              source venv/bin/activate
+              pip install -r requirements.txt
+            else
+              pip3 install -r requirements.txt
+            fi
+            
+            # Kill running instances of scheduler and traffic generator safely
+            echo "Stopping currently running scheduler..."
+            pkill -f run_scheduler.py || true
+            pkill -f run_traffic.py || true
+            
+            # Restart the scheduler in the background using nohup
+            echo "Restarting scheduler in the background..."
+            nohup python3 run_scheduler.py > scheduler.log 2>&1 &
+            
+            echo "Deployment completed successfully!"

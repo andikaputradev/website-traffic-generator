@@ -1,0 +1,91 @@
+# ============================================================
+# Website Traffic Generator - Configuration
+# ============================================================
+# Target: https://andikadev.com
+# Author: Wahyu Andika Putra (https://andikadev.com)
+# ============================================================
+
+# --- Target Website ---
+target:
+  url: "https://andikadev.com"          # Primary URL to generate traffic for
+  pages:                                # Sub-pages & articles to visit
+    - "/"
+    - "/tentang"
+    - "/layanan"
+    - "/layanan/pembuatan-website"
+    - "/layanan/pembuatan-aplikasi"
+    - "/layanan/upload-play-store"
+    - "/layanan/keamanan-siber"
+    - "/layanan/web3-blockchain"
+    - "/blog"
+    - "/blog/core-web-vitals-inp-nextjs-optimasi-performa-seo"
+    - "/blog/cara-membuat-website-pendaftaran-online"
+    - "/blog/kepatuhan-uu-pdp-bagi-pengembang-kontrol-teknis"
+    - "/kontak"
+
+# --- Session Settings ---
+sessions:
+  total: 50                           # Total visitor sessions
+  concurrent: 4                       # Concurrent lightweight browser contexts
+  delay_min: 10                       # Stay 10s minimum per page (registers as GA4 engaged session)
+  delay_max: 22                       # Stay 22s maximum per page
+  pages_per_session_min: 2            # Visit at least 2 pages per session
+  pages_per_session_max: 4            # Visit up to 4 pages per session
+
+# --- Browser Engine ---
+browser:
+  headless: true                      # Invisible ultra-lightweight mode
+  engine: "chromium"                  # Chromium browser
+  timeout: 30000                      # 30s timeout per navigation
+
+# --- Human Behavior Simulation ---
+behavior:
+  scroll: true                        # Natural human scrolling
+  scroll_speed: "random"              # Random scroll speed
+  click_links: true                   # Click internal links directly in DOM
+  click_content: true                 # Click interactive content (tabs, categories, tags, buttons)
+  mouse_movement: true                # Human Bezier curve mouse movements
+  random_pauses: true                 # Natural reading pauses
+
+# --- Traffic Source Distribution ---
+referrers:
+  organic_search_percent: 50          # 50% organic search traffic (Google, Bing, Yahoo)
+  social_percent: 25                  # 25% social media (Twitter/X, LinkedIn, Reddit, Facebook)
+  referral_percent: 15                # 15% referral links (Medium, Dev.to, Tech blogs)
+  direct_percent: 10                  # 10% direct traffic
+  keywords:                           # Targeted search queries boosting andikadev.com SEO
+    - "wahyu andika putra"
+    - "andikadev"
+    - "jasa pembuatan website"
+    - "jasa pembuatan website profesional"
+    - "jasa bikin web semarang wonosobo"
+    - "jasa pembuatan aplikasi mobile"
+    - "jasa pembuatan aplikasi android ios"
+    - "jasa upload aplikasi ke play store"
+    - "jasa publish google play store"
+    - "cara upload aplikasi ke google play console"
+    - "jasa audit keamanan siber"
+    - "penetration testing indonesia"
+    - "web3 blockchain developer indonesia"
+    - "smart contract security audit"
+    - "core web vitals inp nextjs optimasi performa seo"
+    - "kepatuhan uu pdp pengembang aplikasi"
+
+# --- Device Distribution ---
+devices:
+  desktop_percent: 55                 # 55% desktop browsers
+  mobile_percent: 40                  # 40% mobile browsers
+  tablet_percent: 5                   # 5% tablet browsers
+
+# --- Proxy Configuration ---
+proxy:
+  enabled: true                       # Enable proxy rotation
+  file: "proxies.txt"                 # Path to verified proxy file
+  rotation: "random"                  # Random proxy selection
+
+# --- Output Settings ---
+output:
+  logging: true                       # Enable file logging
+  log_file: "traffic_generator.log"   # Log path
+  log_level: "INFO"                   # Log level
+  report_file: "report.json"          # Report output
