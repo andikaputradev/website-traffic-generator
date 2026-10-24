@@ -1,153 +1,174 @@
-Website Traffic Generator
+<div align="center">
 
-Automated Website Traffic Processing and Browser Automation Engine
+# Website Traffic Generator
 
-Developed and maintained by "Wahyu Andika Putra" (https://andikadev.com)
-Founder and Full-Stack Software Engineer at "AndikaDev" (https://andikadev.com)
+**Python-Based Browser Automation and Website Testing**
 
-""Python" (https://img.shields.io/badge/Python-3.8%2B-blue?style=flat-square&logo=python)" (https://python.org)
-""Playwright" (https://img.shields.io/badge/Playwright-Chromium%20%7C%20Firefox-2EAD33?style=flat-square&logo=playwright)" (https://playwright.dev/)
-""License: MIT" (https://img.shields.io/badge/License-MIT-yellow?style=flat-square)" (https://opensource.org/licenses/MIT)
-""Website" (https://img.shields.io/badge/Website-andikadev.com-0F766E?style=flat-square)" (https://andikadev.com)
+Developed and maintained by **[Wahyu Andika Putra](https://andikadev.com)**  
+Founder of **[AndikaDev](https://andikadev.com)**
+
+[![Python](https://img.shields.io/badge/Python-3.8%2B-3776AB?style=flat-square&logo=python&logoColor=white)](https://python.org)
+[![Playwright](https://img.shields.io/badge/Playwright-Chromium%20%7C%20Firefox-2EAD33?style=flat-square&logo=playwright&logoColor=white)](https://playwright.dev/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](https://opensource.org/licenses/MIT)
+[![Website](https://img.shields.io/badge/Website-andikadev.com-0F766E?style=flat-square)](https://andikadev.com)
+
+[Overview](#overview) · [Features](#features) · [Architecture](#architecture) · [Installation](#installation) · [Usage](#usage) · [Configuration](#configuration) · [Deployment](#deployment) · [Author](#author)
+
+</div>
 
 ---
 
-Overview
+## Overview
 
-Website Traffic Generator is a Python-based browser automation engine built with Playwright. It automates website navigation, page rendering, interaction workflows, and session management through real browser engines.
+**Website Traffic Generator** is a Python-based browser automation project built with Playwright. It automates browser sessions, page navigation, website interactions, and configurable execution workflows using Chromium.
 
-The project is designed for developers, QA engineers, and system administrators who need to evaluate website behavior, validate analytics implementations, and test browser-based workflows in controlled environments.
+The project is intended for authorized website testing, analytics implementation checks, browser workflow validation, and controlled infrastructure testing.
 
-Key Use Cases
+### Use Cases
 
-- Website functionality and browser compatibility testing.
-- Analytics event and UTM parameter validation.
-- Multi-page navigation and interaction testing.
-- Responsive layout and viewport verification.
-- CDN, caching, and infrastructure performance testing.
-- Automated browser workflows for authorized environments.
+- Validate analytics tags, events, and UTM parameters.
+- Test page navigation and interactive elements.
+- Verify responsive layouts across device viewports.
+- Exercise multi-page browser workflows.
+- Review website behavior under controlled concurrent sessions.
+- Validate caching and infrastructure behavior on systems you own or are authorized to test.
 
-Key Features
+> **Important:** Automated browser sessions are not equivalent to genuine human visitors. Referrer settings do not guarantee real organic or social traffic, and analytics platforms may identify or filter automated activity.
 
-Browser Automation
+## Features
 
-- Chromium and Firefox browser support through Playwright.
-- Automated page navigation and internal link traversal.
-- Configurable page interaction and scrolling.
-- Adjustable session duration and navigation depth.
-- Headless and headed execution modes.
+### Browser Automation
 
-Traffic Source Configuration
+- Playwright-powered Chromium browser sessions.
+- Headless and visible browser execution.
+- Automated navigation and internal-link interaction.
+- Configurable session duration and page limits.
+- Scrolling, pauses, and interactive element testing.
 
-- Configurable referrer information.
-- Support for direct, search, social, and referral source classifications.
-- Customizable URL parameters and search-related test scenarios.
-- Configurable traffic distribution for controlled testing.
+### Traffic Source Configuration
 
-Referrer information does not independently establish genuine organic or social traffic.
+- Configurable referrer values.
+- Direct, search, social, and referral source test scenarios.
+- Custom URL parameters for campaign and UTM validation.
+- Adjustable source distribution for controlled tests.
 
-Proxy Management
+### Proxy Management
 
-- HTTP, HTTPS, and SOCKS5 proxy configuration.
+- HTTP, HTTPS, and SOCKS5 proxy configuration, where supported by the installed dependencies.
 - Random and round-robin proxy selection.
-- Proxy connectivity validation.
+- Proxy connectivity checks.
 - Configurable proxy lists for authorized testing environments.
 
-Device and Viewport Configuration
+### Device and Viewport Profiles
 
-- Desktop, mobile, and tablet viewport profiles.
-- Configurable browser user-agent strings.
+- Desktop, mobile, and tablet viewport settings.
+- Configurable user-agent strings.
 - Responsive layout verification.
-- Browser locale and timezone configuration.
+- Browser locale and timezone configuration, where implemented.
 
-Asynchronous Execution
+### Asynchronous Execution
 
-- Python "asyncio" integration.
+- Python `asyncio` integration.
 - Concurrent browser context management.
 - Configurable concurrency and execution intervals.
-- Logging and JSON report generation.
+- Application logging and JSON reports, where implemented.
 
-Architecture
+## Architecture
 
-Configuration
-     |
-     v
-Traffic Execution Engine
-     |
-     +-- Browser Automation
-     |      +-- Page Navigation
-     |      +-- Element Interaction
-     |      +-- Scroll and Viewport Testing
-     |
-     +-- Session Management
-     |      +-- Duration and Page Limits
-     |      +-- Concurrency Control
-     |
-     +-- Proxy Management
-     |      +-- Proxy Configuration
-     |      +-- Connectivity Validation
-     |
-     +-- Logging and Reporting
-            +-- Execution Logs
-            +-- JSON Reports
+```text
+                  Configuration (YAML / CLI)
+                            |
+                            v
+                 Browser Execution Engine
+                            |
+             +--------------+--------------+
+             |              |              |
+             v              v              v
+       Navigation       Session        Proxy
+       & Interaction    Management     Management
+             |              |              |
+             +--------------+--------------+
+                            |
+                            v
+                   Logs and Reports
+```
 
-Requirements
+## Requirements
 
 - Python 3.8 or newer.
 - Git.
 - Playwright and its supported browser dependencies.
-- Linux, macOS, or Windows.
+- Windows, macOS, or Linux.
 
-For production environments, use a supported Python version and keep project dependencies updated.
+For new deployments, use a currently supported Python release compatible with the project's dependencies.
 
-Installation
+## Installation
 
-1. Clone the Repository
+### 1. Clone the Repository
 
+```bash
 git clone https://github.com/andikaputradev/website-traffic-generator.git
 cd website-traffic-generator
+```
 
-2. Create a Virtual Environment
+### 2. Create a Virtual Environment
 
-Windows PowerShell
+**Windows PowerShell**
 
+```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
+```
 
-Linux and macOS
+**Linux / macOS**
 
+```bash
 python3 -m venv venv
 source venv/bin/activate
+```
 
-3. Install Dependencies
+### 3. Install Dependencies
 
+```bash
 pip install -r requirements.txt
 python -m playwright install chromium
+```
 
-On supported Linux systems, install additional browser dependencies if required:
+On supported Linux systems, install browser system dependencies if needed:
 
+```bash
 python -m playwright install-deps chromium
+```
 
-Usage
+## Usage
 
-Run a Browser Automation Session
+The following commands illustrate the intended command-line interface. Available options depend on the implementation in the checked-out repository.
 
+### Run Browser Sessions
+
+```bash
 python run_traffic.py --url "https://example.com" --sessions 30 --concurrent 5
+```
 
-Configure a Proxy List
+### Use a Proxy List
 
+```bash
 python run_traffic.py --url "https://example.com" --sessions 30 --concurrent 4 --proxy-file proxies.txt
+```
 
-Run with a Configuration File
+### Load a YAML Configuration
 
+```bash
 python run_traffic.py --config config.yaml
+```
 
-Replace "example.com" with a website you own or are authorized to test.
+Replace `example.com` with a website you own or have permission to test. Keep concurrency and request frequency within the target system's safe limits.
 
-Configuration
+## Configuration
 
-The "config.yaml" file provides centralized configuration for target URLs, session limits, browser settings, and execution behavior.
+Example `config.yaml`:
 
+```yaml
 target:
   url: "https://example.com"
   pages:
@@ -197,33 +218,37 @@ output:
   log_file: "traffic_generator.log"
   log_level: "INFO"
   report_file: "report.json"
+```
 
-Note: Configuration options must match the parameters implemented in the current source code. The values above are an example configuration, not a guarantee that every option is supported by every version.
+**Configuration note:** This is an example structure. Confirm that each key is supported by the version of the source code you are running; unused configuration values will not affect execution.
 
-Proxy Generation and Validation
+## Proxy Generation and Validation
 
-The project may include a "generate_proxies.py" utility for collecting and checking proxy endpoints.
+If the repository contains `generate_proxies.py`, run it with:
 
+```bash
 python generate_proxies.py
+```
 
-Use trusted proxy providers or endpoints you are authorized to access. Public proxies can be unreliable and may expose traffic or credentials to third parties.
+Use trusted proxy providers or endpoints you are authorized to access. Public proxies may be unstable and can expose traffic or credentials to third parties.
 
-Scheduling and Automation
+## Scheduling
 
-If the repository includes "run_scheduler.py", scheduled execution can be started with:
+If the repository contains `run_scheduler.py`, start it with:
 
+```bash
 python run_scheduler.py
+```
 
-Scheduling behavior, execution intervals, recovery mechanisms, and supported options depend on the implementation in the repository.
+Scheduling intervals, recovery behavior, and supported options depend on the actual implementation.
 
-Deployment
+## Deployment
 
-The application can run on a Linux VPS or another compatible environment.
+For long-running workloads on Linux, use a dedicated unprivileged service account, an isolated virtual environment, resource limits, and persistent logs.
 
-For long-running workloads, configure a dedicated, unprivileged service account, an isolated Python environment, appropriate resource limits, and persistent application logs.
+Example systemd unit:
 
-Example systemd service:
-
+```ini
 [Unit]
 Description=Website Traffic Generator
 After=network.target
@@ -238,68 +263,68 @@ RestartSec=15
 
 [Install]
 WantedBy=multi-user.target
+```
 
-Save the configuration as "/etc/systemd/system/traffic-generator.service", then run:
+Save it as `/etc/systemd/system/traffic-generator.service`. Update the user, directory, and entry point to match your deployment, then run:
 
+```bash
 sudo systemctl daemon-reload
 sudo systemctl enable --now traffic-generator
 sudo systemctl status traffic-generator
+```
 
-Adjust the service account, working directory, and entry point to match your deployment.
+## Testing and Analytics Validation
 
-Testing and Analytics Validation
+Use controlled test cases to verify website behavior:
 
-The browser automation engine can be used to verify website functionality and inspect analytics implementations in controlled test environments.
+- Confirm analytics tags load.
+- Verify event names and parameters.
+- Test navigation and conversion flows.
+- Check layouts across viewport sizes.
+- Review logs and generated reports.
 
-Recommended validation scenarios include:
+Automated activity must not be represented as genuine human engagement, organic search performance, or authentic advertising activity.
 
-- Confirming that analytics tags load correctly.
-- Verifying event names and parameters.
-- Testing navigation and conversion workflows.
-- Checking responsive layouts across viewport profiles.
-- Reviewing execution logs and generated reports.
+## Responsible Use
 
-Automated browser sessions should not be treated as evidence of genuine human visitors, genuine search rankings, or authentic advertising engagement. Analytics platforms may classify or filter automated activity.
+Use this software only on websites and infrastructure you own or are explicitly authorized to test.
 
-Responsible Use
-
-Use this software only on websites and infrastructure you own or have explicit authorization to test.
-
-- Do not generate fraudulent advertising impressions or clicks.
+- Do not generate fraudulent advertising clicks or impressions.
 - Do not manipulate analytics or business metrics deceptively.
 - Do not overload websites or third-party infrastructure.
-- Respect applicable terms of service, access controls, and rate limits.
-- Protect credentials, proxy information, and sensitive execution logs.
+- Respect access controls, rate limits, and applicable terms of service.
+- Protect credentials, proxy details, and sensitive logs.
 
-Author
+## Author
 
-Wahyu Andika Putra
-Full-Stack Software Engineer and Cybersecurity Researcher
-Founder of "AndikaDev" (https://andikadev.com)
+**Wahyu Andika Putra**  
+Full-Stack Software Engineer · Cybersecurity Researcher  
+Founder of **[AndikaDev](https://andikadev.com)**
 
-Channel| Contact
-Website| "andikadev.com" (https://andikadev.com)
-LinkedIn| "Wahyu Andika Putra" (https://linkedin.com/in/wahyu-andika-putra)
-GitHub| "@andikaputradev" (https://github.com/andikaputradev)
-Email| "wahyuandikaputra.co.id@gmail.com" (mailto:wahyuandikaputra.co.id@gmail.com)
-WhatsApp| "+62 877-3013-9582" (https://wa.me/6287730139582)
-Telegram| "@andikaputradev" (https://t.me/andikaputradev)
-Instagram| "@andikaputradev" (https://instagram.com/andikaputradev)
-TikTok| "@andikaputradev" (https://tiktok.com/@andikaputradev)
+| Channel | Link |
+|---|---|
+| Website | [andikadev.com](https://andikadev.com) |
+| LinkedIn | [Wahyu Andika Putra](https://linkedin.com/in/wahyu-andika-putra) |
+| GitHub | [@andikaputradev](https://github.com/andikaputradev) |
+| Email | [wahyuandikaputra.co.id@gmail.com](mailto:wahyuandikaputra.co.id@gmail.com) |
+| WhatsApp | [+62 877-3013-9582](https://wa.me/6287730139582) |
+| Telegram | [@andikaputradev](https://t.me/andikaputradev) |
+| Instagram | [@andikaputradev](https://instagram.com/andikaputradev) |
+| TikTok | [@andikaputradev](https://tiktok.com/@andikaputradev) |
 
-Professional Services
+## Professional Services
 
-Explore software development and engineering services at "AndikaDev.com" (https://andikadev.com).
+Explore software development services at **[AndikaDev.com](https://andikadev.com)**.
 
-- "Website Development" (https://andikadev.com/layanan/pembuatan-website)
-- "Mobile Application Development" (https://andikadev.com/layanan/pembuatan-aplikasi)
-- "Google Play Store Publishing" (https://andikadev.com/layanan/upload-play-store)
-- "Cybersecurity and Defensive Security" (https://andikadev.com/layanan/keamanan-siber)
-- "Web3 and Blockchain Development" (https://andikadev.com/layanan/web3-blockchain)
+- [Website Development](https://andikadev.com/layanan/pembuatan-website)
+- [Mobile Application Development](https://andikadev.com/layanan/pembuatan-aplikasi)
+- [Google Play Store Publishing](https://andikadev.com/layanan/upload-play-store)
+- [Cybersecurity and Defensive Security](https://andikadev.com/layanan/keamanan-siber)
+- [Web3 and Blockchain Development](https://andikadev.com/layanan/web3-blockchain)
 
-License
+## License
 
-This project is distributed under the MIT License. See ""LICENSE"" (LICENSE) for the complete license terms.
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for the complete license terms.
 
-Copyright (c) 2026 Wahyu Andika Putra
-"https://andikadev.com" (https://andikadev.com)
+Copyright (c) 2026 **Wahyu Andika Putra**  
+[https://andikadev.com](https://andikadev.com)
